@@ -1,0 +1,8 @@
+{{! Partial for API function signature }}
+export const {{methodPrefix method}} {{pascalCase path}} = async (
+  {{parameterList operation}}
+): Promise<{{responseType operation}}> => {
+  const url = `{{formatUrl path operation}}`;
+  const response = await axios.{{method}}<{{responseType operation}}>(url{{#if (hasRequestBody operation)}}, data{{/if}});
+  return response.data;
+};

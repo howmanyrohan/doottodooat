@@ -1,0 +1,10 @@
+{{! handlebars template for generating api.ts from OpenAPI JSON }}
+import axios from "axios";
+import { {{#each schemas}}{{@key}}{{#unless @last}}, {{/unless}}{{/each}} } from "./types";
+
+{{! Loop through each path and method, using a partial for the function signature }}
+{{#each paths as |methods path|}}
+  {{#each methods as |operation method|}}
+    {{> api-function-signature path=../path method=method operation=operation}}
+  {{/each}}
+{{/each}}

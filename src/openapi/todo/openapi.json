@@ -1,0 +1,162 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Todo API",
+    "version": "1.0.0",
+    "description": "A simple Todo API with CRUD operations using Dto naming"
+  },
+  "servers": [
+    {
+      "url": "https://grxkcrjysurkewkwxhhh.supabase.co",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/todo": {
+      "get": {
+        "summary": "Get all todos",
+        "responses": {
+          "200": {
+            "description": "A list of todos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TodoDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new todo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTodoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Todo created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodoDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of the todo",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "put": {
+        "summary": "Update a todo by ID",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTodoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Todo updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodoDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Todo not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a todo by ID",
+        "responses": {
+          "204": {
+            "description": "Todo deleted successfully"
+          },
+          "404": {
+            "description": "Todo not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TodoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "todo": {
+            "type": "string",
+            "example": "ur mom"
+          },
+          "done": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "CreateTodoDto": {
+        "type": "object",
+        "properties": {
+          "todo": {
+            "type": "string",
+            "example": "ur mom"
+          },
+          "done": {
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "required": ["todo", "done"]
+      },
+      "UpdateTodoDto": {
+        "type": "object",
+        "properties": {
+          "todo": {
+            "type": "string",
+            "example": "ur mom"
+          },
+          "done": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "required": ["todo", "done"]
+      }
+    }
+  }
+}

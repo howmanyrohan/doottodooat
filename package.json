@@ -10,6 +10,8 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.8",
     "@tanstack/react-query": "^5.74.4",
     "@tanstack/react-query-devtools": "^5.76.2",
@@ -24,8 +26,10 @@
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/eslintrc": "^3",
+    "@faker-js/faker": "^9.9.0",
     "@tailwindcss/postcss": "^4",
     "@tanstack/eslint-plugin-query": "^5.73.3",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -34,7 +38,9 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "husky": "^9.1.7",
+    "js-yaml": "^4.1.0",
     "lint-staged": "^15.5.0",
+    "msw": "^2.10.4",
     "prettier": "^3.5.3",
     "tailwindcss": "^4",
     "typescript": "^5"
