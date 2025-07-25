@@ -3,14 +3,15 @@ import { createClient } from "@/utils/supabase/server";
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const supabase = await createClient();
   const body = await req.json();
+  const { id } = await params;
   const { data, error } = await supabase
     .from("todo")
     .update(body)
-    .eq("id", params.id)
+    .eq("id", id)
     .select();
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -23,10 +24,11 @@ export async function PUT(
 
 export async function DELETE(
   _req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const supabase = await createClient();
-  const { error } = await supabase.from("todo").delete().eq("id", params.id);
+  const { id } = await params;
+  const { error } = await supabase.from("todo").delete().eq("id", id);
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
