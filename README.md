@@ -1,33 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Doottodooat - Next.js Todo Application
 
-## Getting Started
+A modern, full-stack todo application built with Next.js, Supabase, and a standardized development workflow.
 
-First, run the development server:
+## 🚀 Quick Start
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+- Node.js 18+
+- pnpm (preferred package manager)
+- Supabase account
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd doottodooat
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Set up environment variables**
+
+   ```bash
+   cp .env.example .env.local
+   # Fill in your Supabase credentials
+   ```
+
+4. **Run the development server**
+
+   ```bash
+   pnpm dev
+   ```
+
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📚 Documentation
+
+This project follows strict coding standards and patterns. New developers should read through the documentation in order:
+
+### Getting Started
+
+- [Development Setup](./docs/development-setup.md) - Complete setup guide
+- [Project Structure](./docs/project-structure.md) - Understanding the codebase organization
+- [Coding Standards](./docs/coding-standards.md) - Rules and conventions we follow
+
+### Development Patterns
+
+- [Local State Management](./docs/local-state-management-pattern.md) - React Context patterns
+- [Server State Management](./docs/server-state-management-pattern.md) - React Query patterns
+- [Form Handling](./docs/form-handling-pattern.md) - React Hook Form + Zod validation
+- [Component Guidelines](./docs/component-guidelines.md) - Building reusable components
+
+### Tools & Configuration
+
+- [Tech Stack](./docs/tech-stack.md) - Technologies and libraries used
+- [Code Quality](./docs/code-quality.md) - ESLint, Prettier, Husky setup
+- [API Documentation](./docs/api-documentation.md) - Backend API patterns
+- [Testing Guide](./docs/testing-guide.md) - Testing strategies and setup
+
+## 🛠️ Key Technologies
+
+- **Framework**: Next.js 15 with App Router
+- **Database**: Supabase (PostgreSQL)
+- **Styling**: Tailwind CSS + shadcn/ui
+- **State Management**: TanStack React Query + React Context
+- **Forms**: React Hook Form + Zod validation
+- **HTTP Client**: Axios
+- **Code Quality**: ESLint + Prettier + Husky + lint-staged
+
+## 🏗️ Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+├── components/ui/          # Reusable UI components (shadcn/ui)
+├── features/              # Feature-based modules
+│   └── {feature}/
+│       ├── components/    # Feature-specific components
+│       ├── hooks/         # Custom hooks
+│       ├── context/       # React Context providers
+│       ├── api.ts         # API endpoints
+│       ├── types.ts       # TypeScript types
+│       └── utils.ts       # Utility functions
+├── openapi/               # API layer with React Query
+├── utils/                 # Global utilities
+└── lib/                   # Configuration and setup
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤝 Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Read the [Coding Standards](./docs/coding-standards.md)
+2. Follow the [Development Workflow](./docs/development-workflow.md)
+3. Ensure all tests pass and code is formatted
+4. Submit a pull request with a clear description
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📋 Available Scripts
 
-## Learn More
+```bash
+pnpm dev          # Start development server
+pnpm build        # Build for production
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+pnpm type-check   # Run TypeScript checks
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Development Workflow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project uses automated code quality tools:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Pre-commit hooks** (via Husky) run linting and formatting
+- **Conventional commits** are enforced via commitlint
+- **TypeScript** strict mode for type safety
+- **ESLint** for code quality
+- **Prettier** for consistent formatting
 
 ## Deploy on Vercel
 
