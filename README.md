@@ -4,14 +4,12 @@ A Flutter example project. Also used as a starter for new projects.
 
 ## Run
 
-1. Generate the platform folders (first time only):
+```
+flutter run -d web-server
+```
 
-   ```
-   flutter create --platforms=android,ios,web .
-   ```
+## Test
 
-2. Run it:
-
-   ```
-   flutter run
-   ```
+```
+flutter test
+```
