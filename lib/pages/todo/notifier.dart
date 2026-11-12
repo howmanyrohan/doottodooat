@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:doottodooat/database/database.dart' show Todo;
+import 'package:doottodooat/models/todo.dart';
 import 'package:doottodooat/pages/todo/interface.dart';
 
 class Notifier extends ChangeNotifier {
@@ -13,4 +13,10 @@ class Notifier extends ChangeNotifier {
     if (title.trim().isEmpty) return;
     await data.addTodo(title.trim());
   }
+
+  Future<void> toggle(Todo todo) => data.setDone(todo.id, !todo.done);
+
+  Future<void> delete(Todo todo) => data.deleteTodo(todo.id);
+
+  Future<void> signOut() => data.signOut();
 }
