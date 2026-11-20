@@ -43,7 +43,6 @@ flutter test
 ```
 lib/
   main.dart
-  database/
   models/
   pages/
     <name>/
