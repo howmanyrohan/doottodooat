@@ -36,6 +36,8 @@ class Page extends StatelessWidget {
                 builder: (context, snapshot) => TodoList(
                   todos: snapshot.data ?? [],
                   onToggle: notifier.toggle,
+                  onRename: notifier.rename,
+                  onMove: notifier.move,
                   onDelete: notifier.delete,
                 ),
               ),

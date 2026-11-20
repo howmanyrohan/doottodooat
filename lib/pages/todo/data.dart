@@ -11,7 +11,7 @@ class Data implements Interface {
   Stream<List<Todo>> watchTodos() => client
       .from('todos')
       .stream(primaryKey: ['id'])
-      .order('id')
+      .order('position')
       .map((rows) => rows.map(Todo.fromJson).toList());
 
   @override
@@ -22,6 +22,16 @@ class Data implements Interface {
   @override
   Future<void> setDone(int id, bool done) async {
     await client.from('todos').update({'done': done}).eq('id', id);
+  }
+
+  @override
+  Future<void> renameTodo(int id, String title) async {
+    await client.from('todos').update({'title': title}).eq('id', id);
+  }
+
+  @override
+  Future<void> moveTodo(int id, double position) async {
+    await client.from('todos').update({'position': position}).eq('id', id);
   }
 
   @override

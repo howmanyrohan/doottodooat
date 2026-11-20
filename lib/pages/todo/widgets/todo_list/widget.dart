@@ -1,43 +1,26 @@
 import 'package:flutter/material.dart';
 
 import 'package:doottodooat/models/todo.dart';
+import 'package:doottodooat/pages/todo/widgets/todo_tile/widget.dart';
 
-class TodoList extends StatelessWidget {
+part 'state.dart';
+
+class TodoList extends StatefulWidget {
   const TodoList({
     super.key,
     required this.todos,
     required this.onToggle,
+    required this.onRename,
+    required this.onMove,
     required this.onDelete,
   });
 
   final List<Todo> todos;
   final ValueChanged<Todo> onToggle;
+  final void Function(Todo todo, String title) onRename;
+  final void Function(List<Todo> todos, int from, int to) onMove;
   final ValueChanged<Todo> onDelete;
 
   @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        for (final todo in todos)
-          ListTile(
-            onTap: () => onToggle(todo),
-            leading: Checkbox(
-              value: todo.done,
-              onChanged: (_) => onToggle(todo),
-            ),
-            title: Text(
-              todo.title,
-              style: todo.done
-                  ? const TextStyle(decoration: TextDecoration.lineThrough)
-                  : null,
-            ),
-            trailing: IconButton(
-              icon: const Icon(Icons.delete_outline),
-              tooltip: 'Delete',
-              onPressed: () => onDelete(todo),
-            ),
-          ),
-      ],
-    );
-  }
+  State<TodoList> createState() => _TodoListState();
 }
